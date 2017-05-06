@@ -15,7 +15,6 @@ public class IEmpDAOProxy implements IEmpDAO{
 	
 	public boolean doCreate(Emp emp) throws Exception
 	{
-		System.out.println("2");
 		boolean isCreated = false;
 		try
 		{

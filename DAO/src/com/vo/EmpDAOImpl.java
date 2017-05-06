@@ -18,7 +18,6 @@ public class EmpDAOImpl implements IEmpDAO{
 	public boolean doCreate(Emp emp) throws Exception
 	{
 		boolean isCreated = false;
-		System.out.println("1");
 		String sql = "INSERT INTO emp (empno,ename,job,hiredate,sal) VALUES(?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, emp.getEmpno());
@@ -62,15 +61,12 @@ public class EmpDAOImpl implements IEmpDAO{
 	{
 		Emp emp = null;
 		String sql = "SELECT empno,ename,job,hiredate,sal FROM emp WHERE empno=?";
-		pstmt.setInt(1, empno);
-		System.out.println("4");
 		try
 		{pstmt = conn.prepareStatement(sql);}catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("3");
+		pstmt.setInt(1, empno);
 		ResultSet rs = pstmt.executeQuery();
-		System.out.println("6");
 		while (rs.next())
 		{
 			emp = new Emp();
