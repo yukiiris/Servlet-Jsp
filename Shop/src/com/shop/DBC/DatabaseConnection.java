@@ -1,4 +1,4 @@
-package com.shop.DBC;
+package com.shop.dbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

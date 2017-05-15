@@ -1,14 +1,15 @@
-package com.shop.user;
+package com.shop.vo;
 
 public class User {
 
-	private static int ID = 1;
+	private int ID = 1;
 	private String name;
 	private String password;
+
 	
-	public User()
+	public void setID(int i)
 	{
-		ID += 1;
+		ID = i;
 	}
 	
 	public int getID()

@@ -62,7 +62,8 @@ public class EmpDAOImpl implements IEmpDAO{
 		Emp emp = null;
 		String sql = "SELECT empno,ename,job,hiredate,sal FROM emp WHERE empno=?";
 		try
-		{pstmt = conn.prepareStatement(sql);}catch (Exception e) {
+		{
+			pstmt = conn.prepareStatement(sql);}catch (Exception e) {
 			e.printStackTrace();
 		}
 		pstmt.setInt(1, empno);
