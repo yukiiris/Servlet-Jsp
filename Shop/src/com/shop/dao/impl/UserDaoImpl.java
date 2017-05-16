@@ -13,6 +13,7 @@ public class UserDaoImpl implements IUserDAO{
 	
 	public UserDaoImpl(Connection conn)
 	{
+		System.out.println(1);
 		this.conn = conn;
 	}
 	
@@ -44,7 +45,7 @@ public class UserDaoImpl implements IUserDAO{
 		boolean isFind = false;
 		try
 		{
-			String sql = "SELECT id FROM user WHERE name=?,password=?";
+			String sql = "SELECT id FROM user WHERE name=? and password=?";
 			pstm = conn.prepareStatement(sql);
 			pstm.setString(1, user.getName());
 			pstm.setString(2, user.getPassword());

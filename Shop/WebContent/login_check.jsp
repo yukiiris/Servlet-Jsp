@@ -24,7 +24,7 @@
 		} 
 	}
 %>
-<form action="LoginServelt" method="post">
+<form action="LoginServlet" method="post">
 	аеУћЃК<input type="text" name="name"><br>
 	УмТыЃК<input type="text" name="password"><br>
 	<input type="submit" value="ЕЧТМ">

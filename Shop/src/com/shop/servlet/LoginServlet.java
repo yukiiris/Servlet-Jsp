@@ -17,6 +17,7 @@ public class LoginServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException,IOException
 	{
+		System.out.println("servlet创建成功");
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		List<String> info = new ArrayList<String>();
