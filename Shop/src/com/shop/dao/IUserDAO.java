@@ -5,5 +5,5 @@ import com.shop.vo.User;
 public interface IUserDAO {
 
 	public boolean doCreate(User user) throws Exception;
-	public User findUser(User user) throws Exception; 
+	public boolean findUser(User user) throws Exception; 
 }

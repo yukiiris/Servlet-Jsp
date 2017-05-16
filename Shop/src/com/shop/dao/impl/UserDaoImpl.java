@@ -39,24 +39,43 @@ public class UserDaoImpl implements IUserDAO{
 		return isCreate;
 	}
 
-	public User findUser(User user) throws Exception
+	public boolean findUser(User user) throws Exception
 	{
-		User finded = null;
-		String sql = "SELECT id FROM user WHERE name=?,password=?";
-		pstm = conn.prepareStatement(sql);
-		pstm.setString(1, user.getName());
-		pstm.setString(2, user.getPassword());
-		ResultSet rs = pstm.executeQuery();
-		
-		while (rs.next())
+		boolean isFind = false;
+		try
 		{
-			finded = new User();
-			finded.setID(rs.getInt(1));
-			finded.setName(rs.getString(2));
-			finded.setPassword(rs.getString(3));
+			String sql = "SELECT id FROM user WHERE name=?,password=?";
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, user.getName());
+			pstm.setString(2, user.getPassword());
+			ResultSet rs = pstm.executeQuery();
+			
+			while (rs.next())
+			{
+				isFind = true;
+				user.setID(rs.getInt(1));
+			}
+			pstm.close();
 		}
-		pstm.close();
-		return finded;
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				if (pstm != null)
+				{
+					pstm.close();
+				}
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return isFind;
 	}
 
 }

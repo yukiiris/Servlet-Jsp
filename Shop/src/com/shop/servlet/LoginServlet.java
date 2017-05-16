@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shop.dao.factory.DAOFactory;
 import com.shop.vo.User;
 
 public class LoginServlet extends HttpServlet{
@@ -19,6 +20,7 @@ public class LoginServlet extends HttpServlet{
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		List<String> info = new ArrayList<String>();
+		String path = "login_check.jsp";
 		
 		if (name == null || "".equals(name))
 		{
@@ -35,12 +37,27 @@ public class LoginServlet extends HttpServlet{
 			user.setPassword(password);
 			try
 			{
-				
+				if (DAOFactory.getIUserDAOInstance().findUser(user))
+				{
+					info.add("µÇÂ¼³É¹¦£¡");
+				}
+				else
+				{
+					info.add("µÇÂ¼Ê§°Ü£¡");
+				}
 			}
 			catch (Exception e)
 			{
 				e.printStackTrace();
 			}
 		}
+		request.setAttribute("info", info);
+		request.getRequestDispatcher(path).forward(request, response);
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException,IOException
+	{
+		doGet(request, response);
 	}
 }
