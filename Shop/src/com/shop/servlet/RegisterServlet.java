@@ -14,12 +14,14 @@ import com.shop.vo.User;
 
 public class RegisterServlet extends HttpServlet {
 
-	public void doGet(HttpServletResponse response, HttpServletRequest request)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
+		System.out.println("servlet");
 		String path = "register.jsp";
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
+		String confirm = request.getParameter("confirm");
 		List<String> info = new ArrayList<String>();
 		
 		if (name == null || "".equals(name))
@@ -33,6 +35,12 @@ public class RegisterServlet extends HttpServlet {
 		if (password == null || "".equals(password))
 		{
 			info.add("密码不能为空");
+		}
+		else if (!confirm.equals(confirm))
+		{
+			System.out.println(confirm);
+			System.out.println(password);
+			info.add("两次密码输入不一致");
 		}
 		else if (password.length() > 9)
 		{
@@ -60,9 +68,11 @@ public class RegisterServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		request.setAttribute("info", info);
+		request.getRequestDispatcher(path).forward(request, response);
 	}
 
-	public void doPost(HttpServletResponse response, HttpServletRequest request)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
 		doGet(request, response);
