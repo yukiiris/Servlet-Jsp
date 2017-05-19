@@ -2,6 +2,7 @@ package com.shop.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.shop.dao.IUserDAO;
 import com.shop.vo.User;
@@ -13,11 +14,10 @@ public class UserDaoImpl implements IUserDAO{
 	
 	public UserDaoImpl(Connection conn)
 	{
-		System.out.println(1);
 		this.conn = conn;
 	}
 	
-	public boolean doCreate(User user) throws Exception
+	public boolean doCreate(User user) throws SQLException
 	{
 		boolean isCreate = false;
 		try

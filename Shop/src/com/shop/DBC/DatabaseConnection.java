@@ -2,6 +2,7 @@ package com.shop.dbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DatabaseConnection {
 
@@ -11,7 +12,7 @@ public class DatabaseConnection {
 	private static final String DBPASSWORD = "user1";
 	private Connection conn = null;
 	
-	public DatabaseConnection() throws Exception
+	public DatabaseConnection() throws ClassNotFoundException, SQLException
 	{
 		try
 		{

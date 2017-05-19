@@ -1,5 +1,7 @@
 package com.shop.dao.proxy;
 
+import java.sql.SQLException;
+
 import com.shop.dao.IUserDAO;
 import com.shop.dao.impl.UserDaoImpl;
 import com.shop.dbc.DatabaseConnection;
@@ -10,7 +12,7 @@ public class UserDAOProxy implements IUserDAO{
 	private DatabaseConnection dbc = null;
 	private IUserDAO dao = null;
 	
-	public UserDAOProxy() throws Exception
+	public UserDAOProxy() throws SQLException, ClassNotFoundException
 	{
 		try
 		{
