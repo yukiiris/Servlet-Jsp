@@ -6,6 +6,8 @@
 <title>商品</title>
 </head>
 <body>
-
+<table>
+	<td>商品名</td>
+</table>
 </body>
 </html>

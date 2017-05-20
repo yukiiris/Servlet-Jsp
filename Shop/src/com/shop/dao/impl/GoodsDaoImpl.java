@@ -2,10 +2,14 @@ package com.shop.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.shop.dao.IGoodsDAO;
 import com.shop.dbc.DatabaseConnection;
+import com.shop.vo.Goods;
 
 public class GoodsDaoImpl implements IGoodsDAO{
 
@@ -50,5 +54,30 @@ public class GoodsDaoImpl implements IGoodsDAO{
 			e.printStackTrace();
 		}
 		return isBuy;
+	}
+
+	public List<Goods> findAll() throws SQLException
+	{
+		List<Goods> list = new ArrayList<Goods>();
+		try
+		{
+			String sql = "SELECT * FROM goods";
+			pstm = conn.prepareStatement(sql);
+			ResultSet rs = pstm.executeQuery();
+			
+			while (rs.next())
+			{
+				Goods goods = new Goods();
+				goods.setPrice(rs.getFloat(2));
+				goods.setIntroduction(rs.getString(3));
+				goods.setName(rs.getString(4));
+				list.add(goods);
+			}
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		 return list;
 	}
 }

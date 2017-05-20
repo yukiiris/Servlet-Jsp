@@ -2,10 +2,12 @@ package com.shop.dao.proxy;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.shop.dao.IGoodsDAO;
 import com.shop.dao.impl.GoodsDaoImpl;
 import com.shop.dbc.DatabaseConnection;
+import com.shop.vo.Goods;
 
 public class GoodsDAOProxy implements IGoodsDAO{
 
@@ -23,6 +25,7 @@ public class GoodsDAOProxy implements IGoodsDAO{
 		}
 		dao = new GoodsDaoImpl(dbc.getConnection());
 	}
+	
 	public boolean addToCart(int gID, int uID) throws SQLException
 	{
 		boolean isAdd = false;
@@ -35,5 +38,19 @@ public class GoodsDAOProxy implements IGoodsDAO{
 			e.printStackTrace();
 		}
 		return isAdd;
+	}
+	
+	public List<Goods> findAll() throws SQLException
+	{
+		List<Goods> list = null;
+		try
+		{
+			list = dao.findAll();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return list;
 	}
 }
