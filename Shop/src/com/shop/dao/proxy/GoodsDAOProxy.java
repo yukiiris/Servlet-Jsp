@@ -13,6 +13,7 @@ public class GoodsDAOProxy implements IGoodsDAO{
 
 	private DatabaseConnection dbc = null;
 	private GoodsDaoImpl dao = null;
+	
 	public GoodsDAOProxy() throws SQLException, ClassNotFoundException
 	{
 		try

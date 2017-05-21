@@ -12,24 +12,24 @@
 <%
 	request.setCharacterEncoding("GBK");
 %>
+<form action="ShowGoodsServlet" method="get"></form>
 <table>
 	<tr>
-		<td>商品名</td>
-		<td>价格</td>
-		<td>简介</td>
+		<td align="center">商品名</td>
 	</tr>
 	<%
-		DAOFactory factory = new DAOFactory();
-		List<Goods> list = DAOFactory.getIGoodsDAOInstance().findAll();
-		for (Goods good : list)
+		List<Goods> list = (List<Goods>)request.getAttribute("list");
+		list = DAOFactory.getIGoodsDAOInstance().findAll();
+		if (list != null)
 		{
+			for (Goods good : list)
+			{
 	%>
-		<tr>
-			<td><%=good.getName() %></td>	
-			<td><%=good.getPrice() %></td>
-			<td><%=good.getIntroduction() %></td>
-		</tr>
+			<tr>
+				<td align="center"><a href="detail.jsp"><%=good.getName() %></a></td>
+			</tr>
 		<%
+			}
 		}
 		%>
 </table>

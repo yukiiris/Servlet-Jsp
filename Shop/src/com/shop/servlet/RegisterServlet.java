@@ -17,7 +17,6 @@ public class RegisterServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
-		System.out.println("servlet");
 		String path = "register.jsp";
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
@@ -38,8 +37,6 @@ public class RegisterServlet extends HttpServlet {
 		}
 		else if (!confirm.equals(confirm))
 		{
-			System.out.println(confirm);
-			System.out.println(password);
 			info.add("两次密码输入不一致");
 		}
 		else if (password.length() > 9)
