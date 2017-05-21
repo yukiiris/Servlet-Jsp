@@ -24,7 +24,8 @@
 		}
 	}
 %>
-<form action="RegisterServlet" method="post">
+
+<form action="RegisterServlet" method="post">	
 	姓名：<input type="text" name="name"><br>
 	密码：<input type="text" name="password"><br>
 	再次输入：<input type="text" name="confirm"><br>
