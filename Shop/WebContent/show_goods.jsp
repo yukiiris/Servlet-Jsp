@@ -26,7 +26,7 @@
 			{
 	%>
 			<tr>
-				<td align="center"><a href="detail.jsp?name=<%=good.getName()%>"><%=good.getName() %></a></td>
+				<td align="center"><a href="DetailServlet?id=<%=good.getID()%>"><%=good.getName() %></a></td>
 			</tr>
 		<%
 			}

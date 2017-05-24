@@ -54,4 +54,18 @@ public class GoodsDAOProxy implements IGoodsDAO{
 		}
 		return list;
 	}
+
+	public Goods findOne(int ID) throws SQLException
+	{
+		Goods goods = new Goods();
+		try
+		{
+			goods = dao.findOne(ID);
+		}
+		catch (SQLException exception)
+		{
+			exception.printStackTrace();
+		}
+		return goods;
+	}
 }

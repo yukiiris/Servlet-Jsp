@@ -68,6 +68,7 @@ public class GoodsDaoImpl implements IGoodsDAO{
 			while (rs.next())
 			{
 				Goods goods = new Goods();
+				goods.setID(rs.getInt(1));
 				goods.setPrice(rs.getFloat(2));
 				goods.setIntroduction(rs.getString(3));
 				goods.setName(rs.getString(4));
@@ -79,6 +80,31 @@ public class GoodsDaoImpl implements IGoodsDAO{
 			e.printStackTrace();
 		}
 		 return list;
+	}
+	
+	public Goods findOne(int ID) throws SQLException
+	{
+		Goods good = new Goods();
+		try
+		{
+			String sql = "SELECT * FROM goods WHERE gid=?";
+			pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, ID);
+			ResultSet rs = pstm.executeQuery();
+			
+			while (rs.next())
+			{
+				good.setID(rs.getInt(1));
+				good.setPrice(rs.getFloat(2));
+				good.setIntroduction(rs.getString(3));
+				good.setName(rs.getString(4));
+			}
+		}
+		catch (SQLException exception)
+		{
+			exception.printStackTrace();
+		}
+		return good;
 	}
 
 }
